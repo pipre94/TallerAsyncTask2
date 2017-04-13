@@ -23,7 +23,7 @@
             android:id="@+id/boton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cargar datos"
+            android:text="@string/cargar_datos"
             android:onClick="onClickButton"/>
 
         <ScrollView

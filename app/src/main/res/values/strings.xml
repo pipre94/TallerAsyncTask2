@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TallerAsyncTask</string>
+    <string name="cargar_datos">Cargar datos</string>
 </resources>

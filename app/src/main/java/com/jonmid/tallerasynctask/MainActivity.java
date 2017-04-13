@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar cargador;
     Button boton;
     TextView texto;
+    List<Post> mysPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cargarDatos(){
-        texto.append("JSON cargado correctamente.");
+
+        if(mysPost != null){
+            for(Post post:mysPost){
+                texto.append(post.getTitle() + "\n");
+            }
+        }
     }
 
     private class MyTask extends AsyncTask<String, String, String>{
@@ -81,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            try {
+                mysPost = JsonParser.parse(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             cargarDatos();
             cargador.setVisibility(View.GONE);
         }
