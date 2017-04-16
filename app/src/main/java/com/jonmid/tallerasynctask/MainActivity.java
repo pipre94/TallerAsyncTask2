@@ -4,32 +4,44 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar cargador;
     Button boton;
-    TextView texto;
     List<Post> mysPost;
+    ListView texto;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arrayList;
 
-    @Override
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         cargador = (ProgressBar) findViewById(R.id.cargador);
         boton = (Button) findViewById(R.id.boton);
-        texto = (TextView) findViewById(R.id.texto);
+        texto = (ListView) findViewById(R.id.texto);
+            arrayList = new ArrayList<String>();
+            adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+            texto.setAdapter(adapter);
+
     }
 
     public Boolean isOnLine(){
@@ -56,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(mysPost != null){
             for(Post post:mysPost){
-                texto.append(post.getTitle() + "\n");
+                arrayList.add(post.getTitle()+ "\n");
+
+
             }
         }
     }

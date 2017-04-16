@@ -30,11 +30,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true">
-            <TextView
-                android:id="@+id/texto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
+
+                <ListView
+                    android:id="@+id/texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+
+
+
+
         </ScrollView>
+
+
 
     </LinearLayout>
 
