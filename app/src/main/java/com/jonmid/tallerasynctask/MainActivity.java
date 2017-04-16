@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar cargador;
     Button boton;
     List<Post> mysPost;
-    TextView texto;
+    ListView LIST;
+    ArrayList<String> arrayList;
+    ArrayAdapter<String> adapter;
+    /*TextView texto;
     TextView texto2;
     TextView texto3;
     TextView texto4;
     TextView texto5;
     TextView texto6;
     TextView texto7;
+    */
 
 
 
@@ -42,13 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
         cargador = (ProgressBar) findViewById(R.id.cargador);
         boton = (Button) findViewById(R.id.boton);
-        texto = (TextView) findViewById(R.id.texto);
+        LIST = (ListView) findViewById(R.id.list);
+        arrayList = new ArrayList<String>();
+        /*texto = (TextView) findViewById(R.id.texto);
         texto2= (TextView) findViewById(R.id.texto2);
         texto3= (TextView) findViewById(R.id.texto3);
         texto4 = (TextView) findViewById(R.id.texto4);
         texto5= (TextView) findViewById(R.id.texto5);
         texto6= (TextView) findViewById(R.id.texto6);
-        texto7= (TextView) findViewById(R.id.texto7);
+        texto7= (TextView) findViewById(R.id.texto7);*/
+
 
     }
 
@@ -74,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void cargarDatos(){
 
+        ArrayList<String> lista = new ArrayList<>();
         if(mysPost != null){
+            for (Post post:mysPost){
 
+            lista.add(post.getTitle());
+            }
+            ArrayAdapter<String> adaptador= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,lista);
+            LIST.setAdapter(adaptador);
+            /*
                 for (Post post:mysPost){
                     if(post.getId() ==1){
                         texto.append(post.getTitle());
@@ -93,15 +108,12 @@ public class MainActivity extends AppCompatActivity {
                     else if (post.getId() ==7){
                         texto7.append(post.getTitle());
                     }
-
-
-
-
                 }
-
-
+        */
 
         }
+
+
     }
 
     private class MyTask extends AsyncTask<String, String, String>{
