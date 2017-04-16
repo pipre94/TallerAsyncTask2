@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar cargador;
     Button boton;
     List<Post> mysPost;
-    ListView texto;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> arrayList;
+    TextView texto;
+    TextView texto2;
+    TextView texto3;
+
 
 
         @Override
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         cargador = (ProgressBar) findViewById(R.id.cargador);
         boton = (Button) findViewById(R.id.boton);
-        texto = (ListView) findViewById(R.id.texto);
-            arrayList = new ArrayList<String>();
-            adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
-            texto.setAdapter(adapter);
+        texto = (TextView) findViewById(R.id.texto);
+        texto2= (TextView) findViewById(R.id.texto2);
+            texto3= (TextView) findViewById(R.id.texto3);
+
 
     }
 
@@ -67,11 +68,23 @@ public class MainActivity extends AppCompatActivity {
     public void cargarDatos(){
 
         if(mysPost != null){
-            for(Post post:mysPost){
-                arrayList.add(post.getTitle()+ "\n");
+
+                for (Post post:mysPost){
+                    if(post.getId() ==1){
+                        texto.append(post.getTitle());
+                    }else if (post.getId() ==2){
+                        texto2.append(post.getTitle());
+                    }else if (post.getId() ==3){
+                        texto3.append(post.getTitle());
+                    }
 
 
-            }
+
+
+                }
+
+
+
         }
     }
 
