@@ -75,10 +75,14 @@ public class MainActivity extends AppCompatActivity {
         if(mysPost != null){
             for (Post post:mysPost){
 
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0,0,0,30);
             //datos.add(post.getTitle());
                 TextView myText = new TextView(this);
                 myText.setText(post.getTitle());
                 myText.setTextColor(Color.BLUE);
+                myText.setLayoutParams(params);
+
                 myLinear.addView(myText);
             }
             //ArrayAdapter<String> adaptador= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,datos);
